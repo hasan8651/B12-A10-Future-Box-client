@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import ForgetPassword from "../pages/ForgetPassword";
+import CourseDetails from "../pages/CourseDetails";
 
 
 
@@ -45,10 +46,10 @@ export const router = createBrowserRouter([
         // element: <AboutUs />,
       },
       {
-        path: "/toy/:id",
+        path: "/courses/:id",
         element: (
           <PrivateRoute>
-            {/* <ToyDetails /> */}
+            <CourseDetails/>
           </PrivateRoute>
         ),
       },

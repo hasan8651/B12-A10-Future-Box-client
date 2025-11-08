@@ -17,7 +17,7 @@ const {_id, title, imageURL, price, duration, category} = course
           </span>
           <p className='text-md my-2 font-semibold text-center text-blue-500'>Category: <span className='text-green-600'> {category}</span></p>
         </div>
-        <Link to={`/course/${_id}`} className="btn h-14 bg-blue-500 text-white hover:bg-blue-700">View Details</Link>
+        <Link to={`/courses/${_id}`} className="btn h-14 bg-blue-500 text-white hover:bg-blue-700">View Details</Link>
       </div>
     </div>
   );
