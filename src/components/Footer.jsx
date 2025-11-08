@@ -6,9 +6,9 @@ const Footer = () => {
       <aside>
         <img className='animate-bounce' src="/favicon.png" alt="Logo" />
         <p>
-          <span className='text-2xl font-semibold'>ToyTopia</span>
+          <span className='text-2xl font-semibold'>Study Pilot</span>
           <br />
-          A Local Kids Toy Store Platform
+          Enhance Your Education
         </p>
       </aside>
 

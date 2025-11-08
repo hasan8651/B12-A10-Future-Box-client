@@ -1,14 +1,10 @@
-import { useEffect } from 'react';
-
-
-import Aos from 'aos';
-import { Helmet } from 'react-helmet-async';
-import Slider from '../components/Slider';
-import FeaturedCourses from '../components/FeaturedCourses';
-
+import { useEffect } from "react";
+import Aos from "aos";
+import { Helmet } from "react-helmet-async";
+import Slider from "../components/Slider";
+import FeaturedCourses from "../components/FeaturedCourses";
 
 const Home = () => {
-
   useEffect(() => {
     Aos.init({
       duration: 2000,
@@ -18,10 +14,11 @@ const Home = () => {
 
   return (
     <div>
-      <Helmet><title>Study Pilot - Home</title></Helmet>
+      <Helmet>
+        <title>Study Pilot - Home</title>
+      </Helmet>
       <Slider />
-      <FeaturedCourses/>
-      
+      <FeaturedCourses />
     </div>
   );
 };

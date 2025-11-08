@@ -33,11 +33,11 @@ const Navbar = () => {
                 <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link to={"/my-toys"}>My Toys</Link>
+                <Link to={"/courses"}>Courses</Link>
               </li>
               <li>
                 {
-                  user && user?.email ? <Link to={"/profile"}>My Profile</Link> : ""
+                  user && user?.email ? <Link to={"/dashboard"}>Dashboard</Link> : ""
                 }
               </li>
               <li>
@@ -70,7 +70,7 @@ const Navbar = () => {
           </div>
           <Link className="flex justify-center items-center gap-2 px-4 lg:px-0 text-2xl font-bold text-white" to="/">
             <img className=" w-[50px] " src="/favicon.png" alt="logo" />
-            ToyTopia
+          Study Pilot
           </Link>
         </div>
 
@@ -82,13 +82,13 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/my-toys" className={({ isActive }) => isActive ? "bg-white  text-blue-500" : "text-white"}>
-                My Toys
+              <NavLink to="/courses" className={({ isActive }) => isActive ? "bg-white  text-blue-500" : "text-white"}>
+                Courses
               </NavLink>
             </li>
             <li>
-              <NavLink to="/profile" className={({ isActive }) => isActive ? "bg-white  text-blue-500" : "text-white"}>
-                My Profile
+              <NavLink to="/dashboard" className={({ isActive }) => isActive ? "bg-white  text-blue-500" : "text-white"}>
+                Dashboard
               </NavLink>
             </li>
             <li>
