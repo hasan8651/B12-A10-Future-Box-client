@@ -4,24 +4,53 @@ import LoadingSpinner from "./LoadingSpinner";
 import CourseCard from "./CourseCard";
 
 const AllCourses = () => {
-
-    const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
     axios("http://localhost:5000/courses")
-      .then((data) => setCourses(data.data))
+      .then((data) => {
+        setCourses(data.data);
+        setFilteredCourses(data.data);
+      })
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }, []);
 
-    return (
-       <div >
-      <h1 className="text-2xl md:text-3xl py-4 mb-4 bg-primary font-semibold text-center ">
-        All Courses
-      </h1>
+  const handleFilter = (category) => {
+    setCategoryFilter(category);
+    if (category === "") {
+      setFilteredCourses(courses);
+    } else {
+      const filtered = courses.filter((course) => course.category === category);
+      setFilteredCourses(filtered);
+    }
+  };
+
+  const categories = [...new Set(courses.map((course) => course.category))];
+
+  return (
+    <div>
+      <div className="mb-4 bg-primary flex items-center justify-center py-2">
+        <select
+          className="select select-bordered w-full max-w-xs bg-transparent"
+          value={categoryFilter}
+          onChange={(e) => handleFilter(e.target.value)}
+        >
+          <option className="bg-primary" value="">
+            All Category
+          </option>
+          {categories.map((category, i) => (
+            <option className="bg-primary" key={i} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {loading ? (
         <div className="flex justify-center items-center py-20">
@@ -29,13 +58,13 @@ const AllCourses = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {courses.map((course) => (
+          {filteredCourses.map((course) => (
             <CourseCard key={course._id} course={course} />
           ))}
         </div>
       )}
     </div>
-    );
+  );
 };
 
 export default AllCourses;
