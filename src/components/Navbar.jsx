@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logoutFunction, loading } = useContext(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  const location = useLocation();
+  const isDashboardActive = ["/dashboard", "/my-enrolled", "/add-course", "/my-added"]
+    .some(path => location.pathname.startsWith(path));
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -16,8 +20,8 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <div className="navbar max-w-7xl bg-linear-to-r from-blue-900 via-purple-800 to-blue-900 text-white shadow-lg fixed top-0 w-full z-50 px-12">
+    <div className="mb-25">
+      <div className="navbar max-w-7xl bg-primary text-white shadow-lg fixed top-0 w-full z-50 px-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -95,14 +99,10 @@ const Navbar = () => {
             to="/"
           >
             <img
-              className=" w-[50px] rounded-full border-2 border-purple-500 shadow-md hidden md:block "
-              src="/favicon.png"
+              className=" w-30"
+              src="/logo.webp"
               alt="logo"
             />
-
-            <span className="text-2xl font-bold text-purple-400 tracking-wider">
-              Study Pilot
-            </span>
           </Link>
         </div>
 
@@ -132,18 +132,90 @@ const Navbar = () => {
                 Courses
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/dashboard"
+
+
+{user && user?.email ? (
+           <li>
+                  <div className=" drawer-end">
+  <input id="my-drawer-5" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content">
+      <label htmlFor="my-drawer-5" 
+   className={`px-3 py-2 rounded cursor-pointer ${
+                      isDashboardActive ? "bg-purple-900 text-purple-400"
+                      : "hover:text-purple-400"
+                    }`}
+     >Dashboard</label>
+  </div>
+  <div className="drawer-side">
+    <label htmlFor="my-drawer-5" aria-label="close sidebar" className="drawer-overlay"></label>
+    <ul className="menu bg-primary min-h-full w-80 p-4">
+                     <li className="flex justify-center items-center pb-2">
+                  <img
+                    src={
+                      user?.photoURL ||
+                      "https://img.icons8.com/windows/64/user.png"
+                    }
+                    alt="user photo"
+                    className="rounded-full"
+                  />
+                </li>
+                <li className="text-center font-semibold border-b border-gray-200 pb-2">
+                  Hello, {user?.displayName || "User"}
+                </li>
+            <li><NavLink
+                to="/my-enrolled"
                 className={({ isActive }) =>
                   isActive
                     ? "bg-purple-900  text-purple-400"
                     : "hover:text-purple-400"
                 }
               >
-                Dashboard
-              </NavLink>
-            </li>
+                My Enrolled Course 
+              </NavLink></li>
+      <li><NavLink
+                to="/add-course"
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-purple-900  text-purple-400"
+                    : "hover:text-purple-400"
+                }
+              >
+                Add Course 
+              </NavLink></li>
+      <li><NavLink
+                to="/my-added"
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-purple-900  text-purple-400"
+                    : "hover:text-purple-400"
+                }
+              >
+                My Added Course
+              </NavLink></li>
+
+              <li>
+                  <button
+                    onClick={logoutFunction}
+                    className="btn btn-primary  w-full"
+                  >
+                    Logout
+                  </button>
+                </li>
+    </ul>
+  </div>
+</div>
+</li>
+                ) : (
+""
+                )}
+
+
+
+
+
+
+
+
             <li>
               <NavLink
                 to="/about-us"

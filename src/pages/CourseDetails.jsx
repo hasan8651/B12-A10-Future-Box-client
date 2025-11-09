@@ -24,11 +24,11 @@ const CourseDetails = () => {
     return <div> Loading...</div>;
   }
   return (
-    <div className="bg-blue-50 min-h-screen py-10 px-4">
+    <div className=" min-h-screen py-10 px-4">
       <Helmet>
         <title>Study Pilot - {course.title}</title>
       </Helmet>
-      <div className="max-w-5xl mx-auto bg-blue-50 shadow-xl rounded-lg overflow-hidden">
+      <div className="max-w-5xl mx-auto shadow-xl rounded-lg overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:w-1/2 flex items-center justify-center p-6">
             <img

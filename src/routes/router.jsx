@@ -8,6 +8,10 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import ForgetPassword from "../pages/ForgetPassword";
 import CourseDetails from "../pages/CourseDetails";
+import AllCourses from "../components/AllCourses";
+import MyEnrolledCourse from "../pages/MyEnrolledCourse";
+import AddCourse from "../pages/AddCourse";
+import MyAddedCourse from "../pages/MyAddedCourse";
 
 
 
@@ -26,12 +30,8 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/my-toys",
-        element: (
-          <PrivateRoute>
-            {/* <MyToys /> */}
-          </PrivateRoute>
-        ),
+        path: "/courses",
+        element:<AllCourses/> ,
       },
       {
         path: "/profile",
@@ -62,8 +62,16 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/forget-password",
-        element: <ForgetPassword/> ,
+        path: "/my-enrolled",
+        element: <MyEnrolledCourse/> ,
+      },
+      {
+        path: "/add-course",
+        element: <AddCourse/> ,
+      },
+      {
+        path: "/my-added",
+        element: <MyAddedCourse/> ,
       },
       {
         path: "/terms",
