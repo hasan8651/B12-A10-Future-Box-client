@@ -17,8 +17,8 @@ const FeaturedCourses = () => {
   }, []);
 
   return (
-    <div className="my-2 border-2 border-blue-500 rounded-md shadow-xl">
-      <h1 className="text-2xl md:text-3xl py-4 font-semibold text-center bg-blue-500 text-white">
+    <div className="my-2" >
+      <h1 className="text-2xl md:text-3xl py-4 bg-primary font-semibold text-center ">
         Popular Courses
       </h1>
 
