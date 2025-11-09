@@ -1,32 +1,52 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Helmet } from "react-helmet-async";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ProfilePage = () => {
   const { user, updateProfileFunction } = useContext(AuthContext);
   const [displayName, setDisplayName] = useState(user?.displayName || "");
-  const [photoURL, setPhotoURL] = useState(user?.photoURL || "https://img.icons8.com/windows/64/user.png");
+  const [photoURL, setPhotoURL] = useState(
+    user?.photoURL || "https://img.icons8.com/windows/64/user.png"
+  );
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    await updateProfileFunction({
-      displayName,
-      photoURL,
-    });
-
-    toast.success("Profile updated successfully!");
-  } catch (error) {
-    toast.error(`Error updating profile: ${error.message}`);
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await updateProfileFunction({
+        displayName,
+        photoURL,
+      });
+      Swal.fire({
+        position: "top-end",
+        background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
+        color: "white",
+        icon: "success",
+        title: "Profile updated successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      Swal.fire({
+        position: "top-end",
+        background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
+        color: "white",
+        icon: "error",
+        title: `Error updating profile: ${error.message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
 
   return (
-    <div className="max-w-md mx-auto my-8 bg-blue-50 p-6 rounded-lg shadow-lg">
-      <Helmet><title>ToyTopia - Profile</title></Helmet>
-      <h2 className="text-2xl font-semibold mb-4 text-center">My Profile</h2>
-
+    <div className="max-w-md mx-auto my-8 p-6 rounded-lg shadow-lg">
+      <Helmet>
+        <title>Study Pilot - Profile</title>
+      </Helmet>
+      <h2 className="text-2xl text-purple-600 font-semibold mb-4 text-center">
+        My Profile
+      </h2>
       <div className="flex flex-col items-center mb-6">
         <img
           src={photoURL || "https://img.icons8.com/windows/64/user.png"}
@@ -36,7 +56,6 @@ const handleSubmit = async (e) => {
         <p className="text-lg font-medium">{user?.displayName}</p>
         <p className="text-lg font-medium">{user?.email}</p>
       </div>
-
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block font-medium mb-1">Name</label>
@@ -48,7 +67,6 @@ const handleSubmit = async (e) => {
             placeholder="Enter new display name"
           />
         </div>
-
         <div>
           <label className="block font-medium mb-1">Photo URL</label>
           <input
@@ -59,10 +77,9 @@ const handleSubmit = async (e) => {
             placeholder="Enter new photo URL"
           />
         </div>
-
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+          className="w-full btn btn-primary py-2 rounded hover:bg-blue-600 transition"
         >
           Update Profile
         </button>

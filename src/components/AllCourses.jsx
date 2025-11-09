@@ -19,7 +19,7 @@ const AllCourses = () => {
 
     return (
        <div >
-      <h1 className="text-2xl md:text-3xl py-4 bg-primary font-semibold text-center ">
+      <h1 className="text-2xl md:text-3xl py-4 mb-4 bg-primary font-semibold text-center ">
         All Courses
       </h1>
 

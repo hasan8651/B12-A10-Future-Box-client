@@ -7,8 +7,12 @@ const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const location = useLocation();
-  const isDashboardActive = ["/dashboard", "/my-enrolled", "/add-course", "/my-added"]
-    .some(path => location.pathname.startsWith(path));
+  const isDashboardActive = [
+    "/dashboard",
+    "/my-enrolled",
+    "/add-course",
+    "/my-added",
+  ].some((path) => location.pathname.startsWith(path));
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -98,11 +102,7 @@ const Navbar = () => {
             className="flex flex-wrap justify-center items-center gap-2 px-4 lg:px-0 text-2xl font-bold"
             to="/"
           >
-            <img
-              className=" w-30"
-              src="/logo.webp"
-              alt="logo"
-            />
+            <img className=" w-30" src="/logo.webp" alt="logo" />
           </Link>
         </div>
 
@@ -133,88 +133,110 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-
-{user && user?.email ? (
-           <li>
-                  <div className=" drawer-end">
-  <input id="my-drawer-5" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content">
-      <label htmlFor="my-drawer-5" 
-   className={`px-3 py-2 rounded cursor-pointer ${
-                      isDashboardActive ? "bg-purple-900 text-purple-400"
-                      : "hover:text-purple-400"
-                    }`}
-     >Dashboard</label>
-  </div>
-  <div className="drawer-side">
-    <label htmlFor="my-drawer-5" aria-label="close sidebar" className="drawer-overlay"></label>
-    <ul className="menu bg-primary min-h-full w-80 p-4">
-                     <li className="flex justify-center items-center pb-2">
-                  <img
-                    src={
-                      user?.photoURL ||
-                      "https://img.icons8.com/windows/64/user.png"
-                    }
-                    alt="user photo"
-                    className="rounded-full"
-                  />
-                </li>
-                <li className="text-center font-semibold border-b border-gray-200 pb-2">
-                  Hello, {user?.displayName || "User"}
-                </li>
-            <li><NavLink
-                to="/my-enrolled"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-purple-900  text-purple-400"
-                    : "hover:text-purple-400"
-                }
-              >
-                My Enrolled Course 
-              </NavLink></li>
-      <li><NavLink
-                to="/add-course"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-purple-900  text-purple-400"
-                    : "hover:text-purple-400"
-                }
-              >
-                Add Course 
-              </NavLink></li>
-      <li><NavLink
-                to="/my-added"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-purple-900  text-purple-400"
-                    : "hover:text-purple-400"
-                }
-              >
-                My Added Course
-              </NavLink></li>
-
+            {user && user?.email ? (
               <li>
-                  <button
-                    onClick={logoutFunction}
-                    className="btn btn-primary  w-full"
-                  >
-                    Logout
-                  </button>
-                </li>
-    </ul>
-  </div>
-</div>
-</li>
-                ) : (
-""
-                )}
+                <div className=" drawer-end">
+                  <input
+                    id="my-drawer-5"
+                    type="checkbox"
+                    className="drawer-toggle"
+                  />
+                  <div className="drawer-content">
+                    <label
+                      htmlFor="my-drawer-5"
+                      className={`px-3 py-2 rounded cursor-pointer ${
+                        isDashboardActive
+                          ? "bg-purple-900 text-purple-400"
+                          : "hover:text-purple-400"
+                      }`}
+                    >
+                      Dashboard
+                    </label>
+                  </div>
+                  <div className="drawer-side">
+                    <label
+                      htmlFor="my-drawer-5"
+                      aria-label="close sidebar"
+                      className="drawer-overlay"
+                    ></label>
+                    <ul className="menu bg-primary min-h-full w-80 p-4">
+                      <li className="flex justify-center items-center pb-2">
+                        <img
+                          src={
+                            user?.photoURL ||
+                            "https://img.icons8.com/windows/64/user.png"
+                          }
+                          alt="user photo"
+                          className="rounded-full"
+                        />
+                      </li>
+                      <li className="text-center font-semibold border-b border-gray-200 pb-2">
+                        Hello, {user?.displayName || "User"}
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/profile"
+                          className={({ isActive }) =>
+                            isActive
+                              ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
+                              : "hover:text-purple-400 btn btn-primary w-full"
+                          }
+                        >
+                          Update Profile
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/my-enrolled"
+                          className={({ isActive }) =>
+                            isActive
+                              ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
+                              : "hover:text-purple-400 btn btn-primary w-full"
+                          }
+                        >
+                          My Enrolled Course
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/add-course"
+                          className={({ isActive }) =>
+                            isActive
+                              ? "bg-purple-900 text-purple-400 btn btn-primary w-full"
+                              : "hover:text-purple-400 btn btn-primary w-full"
+                          }
+                        >
+                          Add Course
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/my-added"
+                          className={({ isActive }) =>
+                            isActive
+                              ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
+                              : "hover:text-purple-400 btn btn-primary w-full"
+                          }
+                        >
+                          My Added Course
+                        </NavLink>
+                      </li>
 
-
-
-
-
-
-
+                      <li>
+                        <button
+                          onClick={logoutFunction}
+                          className="btn btn-primary  w-full"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            ) : (
+              ""
+            )}
 
             <li>
               <NavLink

@@ -10,14 +10,14 @@ const FeaturedCourses = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("http://localhost:5000/courses")
+    axios("http://localhost:5000/popular-courses")
       .then((data) => setCourses(data.data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }, []);
 
   return (
-    <div className="my-2" >
+    <div className="my-2">
       <h1 className="text-2xl md:text-3xl py-4 bg-primary font-semibold text-center ">
         Popular Courses
       </h1>
@@ -27,7 +27,7 @@ const FeaturedCourses = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courses.map((course) => (
             <CourseCard key={course._id} course={course} />
           ))}

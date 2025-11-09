@@ -6,12 +6,13 @@ import Home from "../pages/Home";
 import PrivateRoute from "./PrivateRoute";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
-import ForgetPassword from "../pages/ForgetPassword";
 import CourseDetails from "../pages/CourseDetails";
 import AllCourses from "../components/AllCourses";
 import MyEnrolledCourse from "../pages/MyEnrolledCourse";
 import AddCourse from "../pages/AddCourse";
 import MyAddedCourse from "../pages/MyAddedCourse";
+import AboutUs from "../pages/AboutUs";
+import ProfilePage from "../pages/ProfilePage";
 
 
 
@@ -37,13 +38,13 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: (
           <PrivateRoute>
-            {/* <ProfilePage /> */}
+            <ProfilePage />
           </PrivateRoute>
         ),
       },
       {
         path: "/about-us",
-        // element: <AboutUs />,
+        element: <AboutUs/>,
       },
       {
         path: "/courses/:id",
