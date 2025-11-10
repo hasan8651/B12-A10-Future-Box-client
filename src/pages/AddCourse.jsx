@@ -40,6 +40,8 @@ const AddCourse = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
+            background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
+            color: "white",
             title: "Course Added Successfully",
             showConfirmButton: false,
             timer: 1500,
@@ -57,18 +59,18 @@ const AddCourse = () => {
   };
 
   return (
-    <div className="flex mt-24 justify-center items-center min-h-screen bg-primary py-12">
-      <div className=" shadow-lg rounded-xl p-8 max-w-2xl w-full space-y-6">
-        <h1 className="text-3xl font-bold text-center  mb-4">
+    <div className="flex justify-center items-center py-2">
+      <div className="shadow-lg rounded-xl p-8 max-w-2xl w-full space-y-6">
+        <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
           Add Your Course
         </h1>
-        <p className="text-gray-600 text-sm text-center mb-6">
+        <p className="text-sm text-center mb-4">
           Add a clear, complete course profile so students choose the right
           path!
         </p>
-        <form onSubmit={handleAddCourse} className="space-y-6">
+        <form onSubmit={handleAddCourse} className="space-y-4">
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">
                 Course Title/Name
               </span>
@@ -77,12 +79,12 @@ const AddCourse = () => {
               name="title"
               type="text"
               placeholder="Enter course title"
-              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">
                 Course Cover Image/Thumbnail (URL)
               </span>
@@ -91,24 +93,24 @@ const AddCourse = () => {
               name="imageURL"
               type="text"
               placeholder="Enter cover image URL"
-              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">Price ($)</span>
             </label>
             <input
               name="price"
               type="number"
               placeholder="Enter course price ($)"
-              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">
                 Duration (1-24 Hour)
               </span>
@@ -117,19 +119,19 @@ const AddCourse = () => {
               name="duration"
               type="number"
               placeholder="Enter course price ($)"
-              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input input-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
               min="1"
               max="24"
             />
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">Category</span>
             </label>
             <select
               name="category"
-              className="select select-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="select select-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
@@ -146,12 +148,12 @@ const AddCourse = () => {
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">Featured Course</span>
             </label>
             <select
               name="featured"
-              className="select select-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="select select-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={selectedCategory}
               onChange={(e) => setSelectedFeatured(e.target.value)}
             >
@@ -161,7 +163,7 @@ const AddCourse = () => {
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">
                 Course Description
               </span>
@@ -169,12 +171,12 @@ const AddCourse = () => {
             <textarea
               name="description"
               placeholder="Write a detailed description about your course"
-              className="textarea textarea-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="textarea textarea-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">User Email</span>
             </label>
             <input
@@ -187,7 +189,7 @@ const AddCourse = () => {
           </div>
 
           <div className="form-control">
-            <label className="label">
+            <label>
               <span className="label-text font-semibold">User Name</span>
             </label>
             <input

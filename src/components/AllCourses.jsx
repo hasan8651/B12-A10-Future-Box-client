@@ -8,16 +8,18 @@ const AllCourses = () => {
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    axios("http://localhost:5000/courses")
-      .then((data) => {
-        setCourses(data.data);
-        setFilteredCourses(data.data);
+    axios
+      .get("http://localhost:5000/courses")
+      .then(({ data }) => {
+        setCourses(data);
+        setFilteredCourses(data);
       })
-      .catch((err) => setError(err))
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => setLoading(false));
   }, []);
 

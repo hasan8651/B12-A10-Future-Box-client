@@ -13,6 +13,7 @@ import AddCourse from "../pages/AddCourse";
 import MyAddedCourse from "../pages/MyAddedCourse";
 import AboutUs from "../pages/AboutUs";
 import ProfilePage from "../pages/ProfilePage";
+import UpdateCourse from "../pages/UpdateCourse";
 
 
 
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: "/add-course",
         element: <AddCourse/> ,
+      },
+      {
+        path: "/update-course",
+        element: <UpdateCourse/> ,
       },
       {
         path: "/my-added",
