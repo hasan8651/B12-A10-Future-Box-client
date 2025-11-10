@@ -2,15 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const CourseDetails = () => {
-  const { id } = useParams();
+const { id } = useParams();
 
-  const [course, setCourse] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const [course, setCourse] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
 
-  console.log(course);
+  console.log(course); // for data
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +22,11 @@ const CourseDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <div> Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <LoadingSpinner />
+      </div>
+    );
   }
   return (
     <div className=" min-h-screen py-10 px-4">
@@ -38,8 +43,10 @@ const CourseDetails = () => {
             />
           </div>
           <div className="lg:w-1/2 p-8 space-y-4">
-            <h1 className="text-3xl font-bold text-blue-500">{course.title}</h1>
-            <div className="flex text-gray-600 items-center justify-between text-lg font-semibold">
+            <h1 className="text-3xl font-bold text-purple-600">
+              {course.title}
+            </h1>
+            <div className="flex items-center justify-between text-lg font-semibold">
               <p>
                 Price:
                 <span className="ml-2 text-green-500">${course.price}</span>
@@ -52,23 +59,23 @@ const CourseDetails = () => {
                 </span>
               </p>
             </div>
-            <div className="lg:flex items-center justify-between text-gray-600 text-lg font-semibold">
+            <div className="lg:flex items-center justify-between  text-lg font-semibold">
               <p className="mb-2 lg:mb-0">
-                <span>Featured:</span>
+                <span>Featured: </span>
                 <span className="ml-2 text-green-500">{course.isFeatured}</span>
               </p>
               <p>
                 <span>Category: </span>
-                <span className="bg-blue-500 text-white rounded-xl px-4">
+                <span className="bg-primary rounded-xl px-4">
                   {course.category}
                 </span>
               </p>
             </div>
-            <div className="border-t border-gray-200 my-4"></div>
-            <p className="text-blue-500 leading-relaxed font-semibold">
+            <div className="border-t border-purple-600 my-4"></div>
+            <p className="text-purple-600 leading-relaxed font-semibold">
               {course.description}
             </p>
-            <div className="border-t border-gray-200 my-4"></div>
+            <div className="border-t border-purple-600 my-4"></div>
           </div>
         </div>
       </div>
