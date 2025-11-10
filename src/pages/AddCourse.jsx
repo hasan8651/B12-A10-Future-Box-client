@@ -154,7 +154,7 @@ const AddCourse = () => {
             <select
               name="featured"
               className="select select-bordered w-full px-4 py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={selectedCategory}
+              value={selectedFeatured}
               onChange={(e) => setSelectedFeatured(e.target.value)}
             >
               <option value={true}>Yes</option>
