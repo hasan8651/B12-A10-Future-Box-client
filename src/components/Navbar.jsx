@@ -9,9 +9,9 @@ const Navbar = () => {
   const location = useLocation();
   const isDashboardActive = [
     "/dashboard",
-    "/my-enrolled",
-    "/add-course",
-    "/my-added",
+    "/dashboard/my-enrolled",
+    "/dashboard/add-course",
+    "/dashboard/my-added",
   ].some((path) => location.pathname.startsWith(path));
 
   useEffect(() => {
@@ -187,7 +187,7 @@ const Navbar = () => {
                       </li>
                       <li>
                         <NavLink
-                          to="/my-enrolled"
+                          to="/dashboard/my-enrolled"
                           className={({ isActive }) =>
                             isActive
                               ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
@@ -199,7 +199,7 @@ const Navbar = () => {
                       </li>
                       <li>
                         <NavLink
-                          to="/add-course"
+                          to="/dashboard/add-course"
                           className={({ isActive }) =>
                             isActive
                               ? "bg-purple-900 text-purple-400 btn btn-primary w-full"
@@ -211,7 +211,7 @@ const Navbar = () => {
                       </li>
                       <li>
                         <NavLink
-                          to="/my-added"
+                          to="/dashboard/my-added"
                           className={({ isActive }) =>
                             isActive
                               ? "bg-purple-900  text-purple-400 btn btn-primary w-full"

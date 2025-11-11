@@ -64,29 +64,38 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/my-enrolled",
-        element: <MyEnrolledCourse/> ,
+        path: "/dashboard/my-enrolled",
+        element: (
+          <PrivateRoute>
+           <MyEnrolledCourse/>
+          </PrivateRoute>
+        ),     
       },
       {
-        path: "/add-course",
-        element: <AddCourse/> ,
-      },
+        path: "/dashboard/add-course",
+         element: (
+          <PrivateRoute>
+           <AddCourse/> 
+          </PrivateRoute>
+        ), 
+        },
       {
         path: "/update-course/:id",
-        element: <UpdateCourse/> ,
+    element:    (
+          <PrivateRoute>
+           <UpdateCourse/> 
+          </PrivateRoute>
+        ), 
       },
       {
-        path: "/my-added",
-        element: <MyAddedCourse/> ,
-      },
-      {
-        path: "/terms",
-        // element: <Terms/> ,
-      },
-      {
-        path: "/policy",
-        // element: <Policy/> ,
-      },
+        path: "/dashboard/my-added",
+        element:    (
+          <PrivateRoute>
+           <MyAddedCourse/>
+          </PrivateRoute>
+        ), 
+      }
+      
     ],
   },
 ]);

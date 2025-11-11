@@ -3,6 +3,8 @@ import Aos from "aos";
 import { Helmet } from "react-helmet-async";
 import Slider from "../components/Slider";
 import FeaturedCourses from "../components/FeaturedCourses";
+import WhyChooseUs from "../components/WhyChooseUs";
+import TopInstructors from "../components/TopInstructors";
 
 const Home = () => {
   useEffect(() => {
@@ -19,6 +21,8 @@ const Home = () => {
       </Helmet>
       <Slider />
       <FeaturedCourses />
+      <WhyChooseUs/>
+      <TopInstructors/>
     </div>
   );
 };
