@@ -1,25 +1,79 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const CourseDetails = () => {
 const { id } = useParams();
-
+ const { user } = useContext(AuthContext);
 const [course, setCourse] = useState([]);
 const [loading, setLoading] = useState(true);
-const [error, setError] = useState(null);
 
-  console.log(course); // for data
+useEffect(() => {
 
-  useEffect(() => {
-    setLoading(true);
-    axios(`http://localhost:5000/courses/${id}`)
-      .then((data) => setCourse(data.data))
-      .catch((err) => setError(err))
+  setLoading(true);
+    axios.get(`http://localhost:5000/courses/${id}`)
+.then(({ data }) => {
+  setCourse(data)
+
+            })
+.catch((err) => {
+        console.log(err);
+      })
       .finally(() => setLoading(false));
   }, [id]);
+
+
+
+const handleEnrolled=()=>{
+
+    const enrolledtCourse = {
+      courseId: course?._id,
+      title: course?.title,
+      imageURL: course?.imageURL,
+      price: course?.price,
+      duration: course?.duration,
+      category: course?.category,
+      email: user?.email,
+          };
+
+    
+ console.log(enrolledtCourse)
+
+axios.post("http://localhost:5000/my-enrolled", enrolledtCourse, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then(({ data }) => {
+        if (data?.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
+            color: "white",
+            title: "Course Enrolled Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Failed to Enroll Course",
+          text: error.response?.data?.message || error.message,
+        });
+      });
+  };
+
+
+
+
+
+
 
   if (loading) {
     return (
@@ -46,27 +100,17 @@ const [error, setError] = useState(null);
             <h1 className="text-3xl font-bold text-purple-600">
               {course.title}
             </h1>
-            <div className="flex items-center justify-between text-lg font-semibold">
-              <p>
-                Price:
-                <span className="ml-2 text-green-500">${course.price}</span>
-              </p>
-              <p>
-                {" "}
-                Rating:
-                <span className="ml-2 text-green-500">
-                  ⭐ {course.duration}
-                </span>
-              </p>
-            </div>
-            <div className="lg:flex items-center justify-between  text-lg font-semibold">
-              <p className="mb-2 lg:mb-0">
+            
+            <div className="flex items-center justify-between  text-lg font-semibold">
+       
                 <span>Featured: </span>
-                <span className="ml-2 text-green-500">{course.isFeatured}</span>
-              </p>
+                <span className="text-green-500">
+                 {course.isFeatured?"yes":"No"}
+                  </span>
+             
               <p>
                 <span>Category: </span>
-                <span className="bg-primary rounded-xl px-4">
+                <span className="text-green-500">
                   {course.category}
                 </span>
               </p>
@@ -76,7 +120,27 @@ const [error, setError] = useState(null);
               {course.description}
             </p>
             <div className="border-t border-purple-600 my-4"></div>
+            <div className="flex items-center justify-between text-lg font-semibold">
+             
+              <p>
+                {" "}
+                Duration:
+                <span className="ml-2 text-green-500">
+                 {course.duration}
+                </span>
+              </p>
+               <p>
+                Price:
+                <span className="ml-2 text-green-500">${course.price}</span>
+              </p>
+{
+  user?.email && 
+  <button onClick={ handleEnrolled} className="btn btn-primary md:w-40">Enroll Now</button>
+}
+</div>
           </div>
+
+
         </div>
       </div>
     </div>

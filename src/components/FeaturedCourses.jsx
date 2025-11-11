@@ -10,7 +10,7 @@ const FeaturedCourses = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("http://localhost:5000/popular-courses")
+    axios("https://study-pilot-server-three.vercel.app/popular-courses")
       .then((data) => setCourses(data.data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
