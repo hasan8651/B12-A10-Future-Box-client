@@ -62,37 +62,63 @@ const Navbar = () => {
                   Courses
                 </Link>
               </li>
+
               <li>
                 {user && user?.email ? (
-                  <Link className="hover:text-purple-400" to={"/dashboard"}>
-                    Dashboard
-                  </Link>
+                  <details close>
+                    <summary className="hover:text-purple-400">
+                      Dashboard
+                    </summary>
+                    <ul>
+                      <li>
+                        <NavLink
+                          to="/profile"
+                          className="hover:text-purple-400"
+                        >
+                          Update Profile
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/dashboard/my-enrolled"
+                          className="hover:text-purple-400"
+                        >
+                          My Enrolled Course
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/dashboard/add-course"
+                          className="hover:text-purple-400"
+                        >
+                          Add Course
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/dashboard/my-added"
+                          className="hover:text-purple-400"
+                        >
+                          My Added Course
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
                 ) : (
-                  ""
-                )}
-              </li>
-              <li>
-                {
                   <Link className="hover:text-purple-400" to={"/about-us"}>
                     About Us
                   </Link>
-                }
-              </li>
-              <li>
-                {user && user?.email ? (
-                  ""
-                ) : (
-                  <Link className="hover:text-purple-400" to={"/login"}>
-                    Login
-                  </Link>
                 )}
               </li>
+
               <li>
                 {user && user?.email ? (
-                  ""
+                  <Link className="hover:text-purple-400" to={"/about-us"}>
+                    About Us
+                  </Link>
                 ) : (
-                  <Link className="hover:text-purple-400" to={"/register"}>
-                    Register
+                  <Link className="hover:text-purple-400" to={"/login"}>
+                    Login / Register
                   </Link>
                 )}
               </li>
