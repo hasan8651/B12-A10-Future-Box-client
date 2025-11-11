@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { loginFunction, setUser, loginPopFunction, setLoading } =
@@ -91,6 +92,9 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet>
+              <title>Study Pilot - Login</title>
+            </Helmet>
       <div className="hero">
         <title>Study Pilot - Login</title>
         <div className="hero-content flex-col lg:flex-row-reverse">

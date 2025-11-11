@@ -15,7 +15,7 @@ const [loading, setLoading] = useState(true);
 useEffect(() => {
 
   setLoading(true);
-    axios.get(`http://localhost:5000/courses/${id}`)
+    axios.get(`https://study-pilot-server-three.vercel.app/courses/${id}`)
 .then(({ data }) => {
   setCourse(data)
 
@@ -43,7 +43,7 @@ const handleEnrolled=()=>{
     
  console.log(enrolledtCourse)
 
-axios.post("http://localhost:5000/my-enrolled", enrolledtCourse, {
+axios.post("https://study-pilot-server-three.vercel.app/my-enrolled", enrolledtCourse, {
         headers: { "Content-Type": "application/json" },
       })
       .then(({ data }) => {

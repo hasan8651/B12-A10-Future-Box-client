@@ -13,7 +13,7 @@ const UpdateCourse = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/courses/${id}`)
+      .get(`https://study-pilot-server-three.vercel.app/courses/${id}`)
       .then(({ data }) => {
         setCourse(data);
       })
@@ -49,7 +49,7 @@ const UpdateCourse = () => {
     };
 
     axios
-      .put(`http://localhost:5000/courses/${course._id}`, updatedCourse, {
+      .put(`https://study-pilot-server-three.vercel.app/courses/${course._id}`, updatedCourse, {
         headers: { "Content-Type": "application/json" },
       })
       .then(({ data }) => {
@@ -72,6 +72,9 @@ const UpdateCourse = () => {
 
   return (
     <div className="flex justify-center items-center py-2">
+      <Helmet>
+              <title>Study Pilot - {course.title}</title>
+            </Helmet>
       <div className="shadow-lg rounded-xl p-8 max-w-2xl w-full space-y-6">
         <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
           Update Your Course

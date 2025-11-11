@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddCourse = () => {
   const { user } = useContext(AuthContext);
@@ -32,7 +33,7 @@ const AddCourse = () => {
     };
 
     axios
-      .post("http://localhost:5000/courses", newCourse, {
+      .post("https://study-pilot-server-three.vercel.app/courses", newCourse, {
         headers: { "Content-Type": "application/json" },
       })
       .then(({ data }) => {
@@ -60,6 +61,9 @@ const AddCourse = () => {
 
   return (
     <div className="flex justify-center items-center py-2">
+      <Helmet>
+              <title>Study Pilot - Add Course</title>
+            </Helmet>
       <div className="shadow-lg rounded-xl p-8 max-w-2xl w-full space-y-6">
         <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
           Add Your Course

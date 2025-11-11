@@ -42,7 +42,7 @@ const ProfilePage = () => {
   return (
     <div className="max-w-md mx-auto my-8 p-6 rounded-lg shadow-lg">
       <Helmet>
-        <title>Study Pilot - Profile</title>
+        <title>Study Pilot - {user?.displayName}</title>
       </Helmet>
       <h2 className="text-2xl text-purple-600 font-semibold mb-4 text-center">
         My Profile

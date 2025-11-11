@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 import CourseCard from "./CourseCard";
+import { Helmet } from "react-helmet-async";
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -12,7 +13,7 @@ const AllCourses = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/courses")
+      .get("https://study-pilot-server-three.vercel.app/courses")
       .then(({ data }) => {
         setCourses(data);
         setFilteredCourses(data);
@@ -37,6 +38,9 @@ const AllCourses = () => {
 
   return (
     <div>
+      <Helmet>
+              <title>Study Pilot - Courses</title>
+            </Helmet>
       <div className="mb-4 bg-primary flex items-center justify-center py-2">
         <select
           className="select select-bordered w-full max-w-xs bg-transparent"

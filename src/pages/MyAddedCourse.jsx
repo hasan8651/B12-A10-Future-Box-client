@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const MyAddedCourse = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const MyAddedCourse = () => {
     if (email) {
       setLoading(true);
       axios
-        .get("http://localhost:5000/courses")
+        .get("https://study-pilot-server-three.vercel.app/courses")
         .then(({ data }) => {
           const filtered = data.filter((course) => course.email === email);
           setCourses(filtered);
@@ -41,7 +42,7 @@ const MyAddedCourse = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/courses/${id}`)
+          .delete(`https://study-pilot-server-three.vercel.app/courses/${id}`)
           .then(({ data }) => {
             if (data?.deletedCount > 0) {
               setCourses((prev) => prev.filter((course) => course._id !== id));
@@ -70,6 +71,9 @@ const MyAddedCourse = () => {
 
   return (
     <div className="p-6  w-[90%] mx-auto">
+      <Helmet>
+              <title>Study Pilot - My Courses</title>
+            </Helmet>
       <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
         My Course(s)
       </h1>

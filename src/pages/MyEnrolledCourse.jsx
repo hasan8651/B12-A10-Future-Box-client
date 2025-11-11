@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Link } from 'react-router';
 import { FaEye, FaTrash } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const MyEnrolledCourse = () => {
 
@@ -16,7 +17,7 @@ const MyEnrolledCourse = () => {
   useEffect(() => {
     if (email) {
       setLoading(true);
-      axios.get("http://localhost:5000/my-enrolled")
+      axios.get("https://study-pilot-server-three.vercel.app/my-enrolled")
         .then(({ data }) => {
           const filtered = data.filter((course) => course.email === email);
           setCourses(filtered);
@@ -42,7 +43,7 @@ const MyEnrolledCourse = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/my-enrolled/${id}`)
+          .delete(`https://study-pilot-server-three.vercel.app/my-enrolled/${id}`)
           .then(({ data }) => {
             if (data?.deletedCount > 0) {
               setCourses((prev) => prev.filter((course) => course._id !== id));
@@ -71,6 +72,9 @@ const MyEnrolledCourse = () => {
 
   return (
     <div className="p-6  w-[90%] mx-auto">
+      <Helmet>
+              <title>Study Pilot - Enrolled Courses</title>
+            </Helmet>
       <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
         My Enrolled Course(s)
       </h1>
