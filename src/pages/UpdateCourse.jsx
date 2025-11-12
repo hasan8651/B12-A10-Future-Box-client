@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
 
@@ -73,7 +74,7 @@ const UpdateCourse = () => {
   return (
     <div className="flex justify-center items-center py-2">
       <Helmet>
-              <title>Study Pilot - {course.title}</title>
+              <title>Study Pilot - Update Course</title>
             </Helmet>
       <div className="shadow-lg rounded-xl p-8 max-w-2xl w-full space-y-6">
         <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">

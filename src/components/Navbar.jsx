@@ -65,7 +65,7 @@ const Navbar = () => {
 
               <li>
                 {user && user?.email ? (
-                  <details close>
+                  <details close='true'>
                     <summary className="hover:text-purple-400">
                       Dashboard
                     </summary>
