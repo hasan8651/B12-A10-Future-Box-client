@@ -126,7 +126,7 @@ const MyAddedCourse = () => {
                   <td className="border border-purple-600 px-4 py-2 text-center hidden md:table-cell">
                     {course.price}
                   </td>
-                  <td className="border-purple-600 py-4 flex gap-2 align-middle justify-center">
+                  <td className="border-b border-purple-600 py-4 md:px-4 md:flex gap-2 align-middle text-center justify-center">
                     <Link
                       to={`/courses/${course._id}`}
                       className="btn btn-gradient btn-sm"
@@ -136,14 +136,14 @@ const MyAddedCourse = () => {
 
                     <Link
                       to={`/update-course/${course._id}`}
-                      className="btn btn-gradient btn-sm"
+                      className="btn btn-gradient btn-sm w-24"
                     >
                       Update
                     </Link>
 
                     <button
                       onClick={() => handleDelete(course._id)}
-                      className="btn btn-gradient btn-sm"
+                      className="btn btn-gradient btn-sm w-24"
                     >
                       Delete
                     </button>
