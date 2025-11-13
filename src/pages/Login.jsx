@@ -20,7 +20,7 @@ const Login = () => {
       background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
       color: "white",
       icon: "success",
-      title: "Please Check Your e-Mail for Reset Password Link.",
+      title: "This link isn't functional for now. (I'll do it after result)",
       showConfirmButton: false,
       timer: 1500,
     });

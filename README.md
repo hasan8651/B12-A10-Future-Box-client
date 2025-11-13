@@ -11,11 +11,11 @@
 ---
 
 ## 🚀 Key Features
-- **Dynamic Course Management** — Instructors can add, update, and delete their courses using an intuitive dashboard.
-- **Secure Authentication** — User login, registration, and Google Sign-In handled via Firebase.
+- **Personalized, Secure Dashboard** — Protected routes (React Router), Profile, My Added Courses, and My Enrolled, plus a tidy drawer navigation.
+- **Secure Authentication** — User login, registration, and Google Sign-In handled via Firebase. Axios-based API calls, loading/error states and page titles via Helmet.
 - **Smooth Animations** — Home and section transitions enhanced with *Framer Motion* and *AOS* for engaging visuals.
 - **Advanced Filtering** — Browse and filter courses by category on the “All Courses” page.
-- **Responsive UI with Theme Toggle** — Fully responsive Tailwind + DaisyUI design with light/dark mode support.
+- **Responsive UI with Theme Toggle** — Smooth UX with responsive layouts, gradient-forward design, light/dark theme toggle, and subtle animations for a polished feel.
 
 ---
 
@@ -48,9 +48,12 @@ client/
   │  ├─ contexts/
   │  ├─ routes/
   │  ├─ firebase/
+  │  ├─ layout/
+  │  ├─ main.jsx
+  │  ├─ index.css
+  │  ├─ index.html
   │  ├─ .env
-  │  ├─ App.jsx
-  │  └─ main.jsx
+  │  └─ .gitignore
 server/
   ├─ index.js
   ├─ vercel.json
@@ -116,7 +119,7 @@ The client should now be live on **http://localhost:5173**.
 
 ## ⚡ Deployment
 - **Frontend:** Deployed on [Vercel](https://vercel.com)
-- **Backend:** Hosted on [Vercel Serverless Functions] or Render
+- **Backend:** Hosted on [Vercel Serverless Functions]
 - **Database:** MongoDB Atlas
 - **Image Hosting:** imgbb API
 
@@ -131,6 +134,6 @@ The client should now be live on **http://localhost:5173**.
 ---
 
 ## 📜 License
-
+```
 This project is open-source and available under the MIT License
 👨‍💻 Developed by Mahmudul Hasan
