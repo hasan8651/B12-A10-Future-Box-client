@@ -2,7 +2,6 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -11,61 +10,53 @@ import {
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
-
+import Swal from "sweetalert2";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [tempEmail, setTempEmail] = useState("")
-  const [myToys, setMyToys] = useState([]);
-
-  const addToy = (toy) => {
-    setMyToys((prev) => {
-      const exists = prev.some((t) => t.toyId === toy.toyId);
-      return exists ? prev : [...prev, toy];
-    });
-  };
 
   const createUserFunction = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-const updateProfileFunction = async (profileInfo) => {
-  if (!auth.currentUser) return;
+  const updateProfileFunction = async (profileInfo) => {
+    if (!auth.currentUser) return;
 
-  await updateProfile(auth.currentUser, {
-    displayName: profileInfo.displayName,
-    photoURL: profileInfo.photoURL,
-  });
+    await updateProfile(auth.currentUser, {
+      displayName: profileInfo.displayName,
+      photoURL: profileInfo.photoURL,
+    });
 
-  await auth.currentUser.reload();
-  const updated = auth.currentUser;
-  setUser({...updated});
-};
+    await auth.currentUser.reload();
+    const updated = auth.currentUser;
+    setUser({ ...updated });
+  };
 
   const loginFunction = (email, password) => {
     setLoading(true);
-    setMyToys([]);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const loginPopFunction = () => {
     setLoading(true);
-    setMyToys([]);
     return signInWithPopup(auth, googleProvider);
   };
 
   const logoutFunction = () => {
     setLoading(true);
-    // toast.success("Logged Out successfully!");
+    Swal.fire({
+      position: "top-end",
+      background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
+      color: "white",
+      icon: "success",
+      title: "Logged Out successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     return signOut(auth);
-  };
-
-  const PassResetFunction = (email) => {
-    setLoading(false);
-     return sendPasswordResetEmail(auth, email);
   };
 
   const authInfo = {
@@ -75,14 +66,9 @@ const updateProfileFunction = async (profileInfo) => {
     loginFunction,
     loginPopFunction,
     logoutFunction,
-    PassResetFunction,
     updateProfileFunction,
     loading,
     setLoading,
-    tempEmail,
-    setTempEmail,
-    myToys,
-    addToy,
   };
 
   useEffect(() => {
@@ -96,7 +82,9 @@ const updateProfileFunction = async (profileInfo) => {
     };
   }, []);
 
-  return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

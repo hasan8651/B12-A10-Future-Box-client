@@ -35,7 +35,7 @@ const MyAddedCourse = () => {
       icon: "warning",
       showCancelButton: true,
       background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
-                color: "white",
+      color: "white",
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
@@ -70,10 +70,10 @@ const MyAddedCourse = () => {
   };
 
   return (
-    <div className="p-6  w-[90%] mx-auto">
+    <div className="p-6 w-[90%] mx-auto">
       <Helmet>
-              <title>Study Pilot - My Courses</title>
-            </Helmet>
+        <title>Study Pilot - My Courses</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
         My Course(s)
       </h1>
@@ -84,25 +84,25 @@ const MyAddedCourse = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse border-2 border-purple-600  shadow-lg rounded-lg">
+          <table className="table-auto w-full border-collapse border-2 border-purple-600 shadow-lg rounded-lg">
             <thead>
-              <tr>
-                <th className="border px-4 py-2 text-left text-purple-600 font-semibold">
+              <tr className="section-gradient">
+                <th className="border px-4 py-2 text-left border-purple-600 font-semibold">
                   #
                 </th>
-                <th className="border px-4 py-2 text-left text-purple-600 font-semibold">
+                <th className="border px-4 py-2 text-left border-purple-600 font-semibold">
                   Title
                 </th>
-                <th className="border px-4 py-2 text-left text-purple-600 font-semibold hidden md:table-cell">
+                <th className="border px-4 py-2 text-left border-purple-600 font-semibold hidden md:table-cell">
                   Category
                 </th>
-                <th className="border px-4 py-2 text-center text-purple-600 font-semibold hidden lg:table-cell">
+                <th className="border px-4 py-2 text-left border-purple-600 font-semibold hidden md:table-cell">
                   Duration
                 </th>
-                <th className="border px-4 py-2 text-center text-purple-600 font-semibold hidden lg:table-cell">
+                <th className="border px-4 py-2 text-left border-purple-600 font-semibold hidden md:table-cell">
                   Price
                 </th>
-                <th className="border px-4 py-2 text-left text-purple-600 font-semibold">
+                <th className="border px-4 py-2 text-left border-purple-600 font-semibold">
                   Actions
                 </th>
               </tr>
@@ -120,30 +120,30 @@ const MyAddedCourse = () => {
                   <td className="border border-purple-600 px-4 py-2 hidden md:table-cell">
                     {course.category}
                   </td>
-                  <td className="border border-purple-600 px-4 py-2 text-center hidden lg:table-cell">
+                  <td className="border border-purple-600 px-4 py-2 text-center hidden md:table-cell">
                     {course.duration}
                   </td>
-                  <td className="border border-purple-600 px-4 py-2 text-center hidden lg:table-cell">
+                  <td className="border border-purple-600 px-4 py-2 text-center hidden md:table-cell">
                     {course.price}
                   </td>
-                  <td className="border-purple-600 py-4 flex gap-2 align-middle justify-center ">
+                  <td className="border-purple-600 py-4 flex gap-2 align-middle justify-center">
                     <Link
                       to={`/courses/${course._id}`}
-                      className="btn btn-primary btn-sm"
+                      className="btn btn-gradient btn-sm"
                     >
                       View Details
                     </Link>
 
                     <Link
                       to={`/update-course/${course._id}`}
-                      className="btn btn-primary btn-sm"
+                      className="btn btn-gradient btn-sm"
                     >
                       Update
                     </Link>
 
                     <button
                       onClick={() => handleDelete(course._id)}
-                      className="btn btn-primary btn-sm"
+                      className="btn btn-gradient btn-sm"
                     >
                       Delete
                     </button>

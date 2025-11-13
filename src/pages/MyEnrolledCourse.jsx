@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { Link } from 'react-router';
-import { FaEye, FaTrash } from 'react-icons/fa';
-import { Helmet } from 'react-helmet-async';
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
+import Swal from "sweetalert2";
+import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router";
+import { FaEye, FaTrash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const MyEnrolledCourse = () => {
-
   const { user } = useContext(AuthContext);
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +16,8 @@ const MyEnrolledCourse = () => {
   useEffect(() => {
     if (email) {
       setLoading(true);
-      axios.get("https://study-pilot-server-three.vercel.app/my-enrolled")
+      axios
+        .get("https://study-pilot-server-three.vercel.app/my-enrolled")
         .then(({ data }) => {
           const filtered = data.filter((course) => course.email === email);
           setCourses(filtered);
@@ -36,14 +36,16 @@ const MyEnrolledCourse = () => {
       icon: "warning",
       showCancelButton: true,
       background: "linear-gradient(to right, #093371, #6E11B0, #093371)",
-                color: "white",
+      color: "white",
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://study-pilot-server-three.vercel.app/my-enrolled/${id}`)
+          .delete(
+            `https://study-pilot-server-three.vercel.app/my-enrolled/${id}`
+          )
           .then(({ data }) => {
             if (data?.deletedCount > 0) {
               setCourses((prev) => prev.filter((course) => course._id !== id));
@@ -71,10 +73,10 @@ const MyEnrolledCourse = () => {
   };
 
   return (
-    <div className="p-6  w-[90%] mx-auto">
+    <div className="p-6 w-[90%] mx-auto">
       <Helmet>
-              <title>Study Pilot - Enrolled Courses</title>
-            </Helmet>
+        <title>Study Pilot - Enrolled Courses</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-center text-purple-600 mb-2">
         My Enrolled Course(s)
       </h1>
@@ -85,9 +87,9 @@ const MyEnrolledCourse = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse border-2 border-purple-600  shadow-lg rounded-lg">
+          <table className="table-auto w-full border-collapse border-2 border-purple-600 shadow-lg rounded-lg">
             <thead>
-              <tr className='bg-primary'>
+              <tr className="section-gradient">
                 <th className="border px-4 py-2 text-left border-purple-600 font-semibold">
                   #
                 </th>
@@ -100,10 +102,10 @@ const MyEnrolledCourse = () => {
                 <th className="border px-4 py-2 text-left border-purple-600 font-semibold hidden md:table-cell">
                   Category
                 </th>
-                <th className="border px-4 py-2 text-center border-purple-600 font-semibold hidden lg:table-cell">
+                <th className="border px-4 py-2 text-center border-purple-600 font-semibold hidden md:table-cell">
                   Duration
                 </th>
-                <th className="border px-4 py-2 text-center border-purple-600 font-semibold hidden lg:table-cell">
+                <th className="border px-4 py-2 text-center border-purple-600 font-semibold hidden md:table-cell">
                   Price
                 </th>
                 <th className="border px-4 py-2 text-left border-purple-600 font-semibold">
@@ -119,7 +121,11 @@ const MyEnrolledCourse = () => {
                     {i + 1}
                   </td>
                   <td className="border border-purple-600 p-1">
-                   <img className='w-28 h-15 md:ml-4 rounded-2xl' src= {course.imageURL} alt="Cover Image" />
+                    <img
+                      className="w-28 h-15 md:ml-4 rounded-2xl"
+                      src={course.imageURL}
+                      alt="Cover Image"
+                    />
                   </td>
                   <td className="border border-purple-600 px-4 py-2">
                     {course.title}
@@ -127,28 +133,28 @@ const MyEnrolledCourse = () => {
                   <td className="border border-purple-600 px-4 py-2 hidden md:table-cell">
                     {course.category}
                   </td>
-                  <td className="border border-purple-600 px-4 py-2 text-center hidden lg:table-cell">
+                  <td className="border border-purple-600 px-4 py-2 text-center hidden md:table-cell">
                     {course.duration}
                   </td>
-                  <td className="border border-purple-600 px-4 py-2 text-center hidden lg:table-cell">
+                  <td className="border border-purple-600 px-4 py-2 text-center hidden md:table-cell">
                     {course.price}
                   </td>
                   <td className="border border-purple-600 ">
-                   <div className='flex justify-between gap-4 md:gap-0 px-2'>
-                     <Link
-                      to={`/courses/${course.courseId}`}
-                      className="btn btn-primary btn-sm text-xl"
-                    >
-                    <FaEye />
-                    </Link>
+                    <div className="flex justify-between gap-4 md:gap-0 px-2">
+                      <Link
+                        to={`/courses/${course.courseId}`}
+                        className="btn btn-gradient btn-sm text-xl"
+                      >
+                        <FaEye />
+                      </Link>
 
-                                      <button
-                      onClick={() => handleDelete(course._id)}
-                      className="btn btn-primary btn-sm text-xl"
-                    >
-                    <FaTrash />
-                    </button>
-                   </div>
+                      <button
+                        onClick={() => handleDelete(course._id)}
+                        className="btn btn-gradient btn-sm text-xl"
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -164,8 +170,6 @@ const MyEnrolledCourse = () => {
       )}
     </div>
   );
-
-
-}
+};
 
 export default MyEnrolledCourse;

@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import MainLayout from "../Layout/MainLayout";
 import ErrorPage from "../pages/ErrorPage";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Home from "../pages/Home";
@@ -14,13 +13,9 @@ import MyAddedCourse from "../pages/MyAddedCourse";
 import AboutUs from "../pages/AboutUs";
 import ProfilePage from "../pages/ProfilePage";
 import UpdateCourse from "../pages/UpdateCourse";
-
-
-
-
+import MainLayout from "../layout/MainLayout";
 
 export const router = createBrowserRouter([
-
   {
     path: "/",
     element: <MainLayout />,
@@ -33,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/courses",
-        element:<AllCourses/> ,
+        element: <AllCourses />,
       },
       {
         path: "/profile",
@@ -45,13 +40,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <AboutUs/>,
+        element: <AboutUs />,
       },
       {
         path: "/courses/:id",
         element: (
           <PrivateRoute>
-            <CourseDetails/>
+            <CourseDetails />
           </PrivateRoute>
         ),
       },
@@ -67,35 +62,34 @@ export const router = createBrowserRouter([
         path: "/dashboard/my-enrolled",
         element: (
           <PrivateRoute>
-           <MyEnrolledCourse/>
+            <MyEnrolledCourse />
           </PrivateRoute>
-        ),     
+        ),
       },
       {
         path: "/dashboard/add-course",
-         element: (
+        element: (
           <PrivateRoute>
-           <AddCourse/> 
+            <AddCourse />
           </PrivateRoute>
-        ), 
-        },
+        ),
+      },
       {
         path: "/update-course/:id",
-    element:    (
+        element: (
           <PrivateRoute>
-           <UpdateCourse/> 
+            <UpdateCourse />
           </PrivateRoute>
-        ), 
+        ),
       },
       {
         path: "/dashboard/my-added",
-        element:    (
+        element: (
           <PrivateRoute>
-           <MyAddedCourse/>
+            <MyAddedCourse />
           </PrivateRoute>
-        ), 
-      }
-      
+        ),
+      },
     ],
   },
 ]);

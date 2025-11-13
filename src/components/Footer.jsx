@@ -1,13 +1,10 @@
-import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="footer md:footer-horizontal bg-primary gap-2 items-center justify-center md:justify-between mt-4 pb-8 md:pb-0  md:px-4">
+    <footer className="footer md:footer-horizontal section-gradient gap-2 items-center justify-center md:justify-between mt-4 pb-8 md:pb-0 md:px-4">
   <aside className="flex-col items-center">
-
-        <img className="w-30" src="/logo.webp" alt="Logo" />
-        <p className="-mt-8">Enhance Your Education</p>
-     
+        <img className="w-24" src="/logo.webp" alt="Logo" />
+        <p className="-mt-4">Enhance Your Education</p>
   </aside>
   <div>
       <p>Copyright © {new Date().getFullYear()} - All right reserved</p>

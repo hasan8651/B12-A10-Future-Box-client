@@ -2,21 +2,129 @@
 
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  name: "light";
+  default: true;
+  --color-primary: #4f46e5;
+  --color-secondary: #8b5cf6;
+  --color-accent: #06b6d4;
+  --color-neutral: #1f2937;
+  --color-base-100: #e9d5ff;
+  --color-base-200: #faf5ff;
+  --color-base-300: #e5e7eb;
+  --color-base-content: #1e3a8a;
 }
 
-.bg-primary {
-  @apply bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 text-white;
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  --color-primary: #fff;
+  --color-secondary: #22d3ee;
+  --color-accent: #f472b6;
+  --color-neutral: #0b1220;
+  --color-base-100: #0b1220;
+  --color-base-200: #0b1220;
+  --color-base-300: #1f2937;
+  --color-base-content: #e5e7eb;
 }
 
-.btn-primary {
-  @apply bg-gradient-to-r from-blue-800 via-purple-600 to-blue-800 text-purple-300;
+[data-theme="light"] {
+  --gradient-btn-from: #1e40af;
+  --gradient-btn-via: #9333ea;
+  --gradient-btn-to: #1e40af;
+  --btn-text: #ffffff;
+
+  --gradient-section-from: #1e3a8a;
+  --gradient-section-via: #6b21a8;
+  --gradient-section-to: #1e3a8a;
+  --section-text: #ffffff;
+  --card-tint: rgba(79, 70, 229, 0.06);
 }
-.btn-primary:hover {
-  @apply bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 text-white;
+
+[data-theme="dark"] {
+  --gradient-btn-from: #22d3ee;
+  --gradient-btn-via: #8b5cf6;
+  --gradient-btn-to: #22d3ee;
+  --btn-text: #0b1220;
+
+  --gradient-section-from: #0ea5e9;
+  --gradient-section-via: #7c3aed;
+  --gradient-section-to: #0ea5e9;
+  --section-text: #ffffff;
+
+  --card-tint: rgba(34, 211, 238, 0.07);
+}
+
+.btn-gradient {
+  color: var(--btn-text);
+  background-image: linear-gradient(
+    90deg,
+    var(--gradient-btn-from),
+    var(--gradient-btn-via),
+    var(--gradient-btn-to)
+  );
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.btn-gradient:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.btn-gradient:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--gradient-btn-via), white 65%);
+}
+
+.section-gradient {
+  color: var(--section-text);
+  background-image: linear-gradient(
+    90deg,
+    var(--gradient-section-from),
+    var(--gradient-section-via),
+    var(--gradient-section-to)
+  );
+}
+
+.card-surface {
+  background: var(--color-base-100);
+  border: 1px solid color-mix(in oklab, var(--color-base-300), transparent 30%);
+  box-shadow: 0 10px 30px -15px color-mix(in oklab, var(--color-base-content), transparent
+        85%);
+  border-radius: var(--radius-box);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.card-surface:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -18px color-mix(in oklab, var(--color-base-content), transparent
+        80%);
+  border-color: color-mix(in oklab, var(--color-primary), transparent 75%);
+}
+.card-tinted {
+  background: radial-gradient(
+      60% 60% at 10% 0%,
+      var(--card-tint),
+      transparent 60%
+    ),
+    var(--color-base-100);
+  border: 1px solid color-mix(in oklab, var(--color-base-300), transparent 30%);
+  border-radius: var(--radius-box);
+}
+
+.heading-hero {
+  @apply text-4xl md:text-5xl font-extrabold;
+  color: var(--color-primary);
+}
+.heading-section {
+  @apply text-2xl md:text-3xl font-semibold;
+  color: var(--color-base-content);
+}
+.text-muted {
+  color: color-mix(in oklab, var(--color-base-content), transparent 40%);
+}
+
+.page-bg {
+  background: var(--color-base-200);
 }
 
 * {
   font-family: "Inter", sans-serif;
 }
-

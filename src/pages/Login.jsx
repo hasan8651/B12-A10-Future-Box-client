@@ -93,8 +93,8 @@ const Login = () => {
   return (
     <div>
       <Helmet>
-              <title>Study Pilot - Login</title>
-            </Helmet>
+        <title>Study Pilot - Login</title>
+      </Helmet>
       <div className="hero">
         <title>Study Pilot - Login</title>
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -152,10 +152,7 @@ const Login = () => {
               {error && <p className="text-red-500 text-sm">{error}</p>}
 
               <div className="form-control">
-                <button
-                  type="submit"
-                  className="btn w-full btn-primary text-white hover:bg-blue-700"
-                >
+                <button type="submit" className="btn w-full btn-gradient">
                   Login
                 </button>
               </div>

@@ -40,11 +40,11 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto my-8 p-6 rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto my-8 p-4 card-surface rounded-lg shadow-lg">
       <Helmet>
         <title>Study Pilot - {user?.displayName}</title>
       </Helmet>
-      <h2 className="text-2xl text-purple-600 font-semibold mb-4 text-center">
+      <h2 className=" text-2xl section-gradient font-semibold mb-4 text-center">
         My Profile
       </h2>
       <div className="flex flex-col items-center mb-6">
@@ -79,7 +79,7 @@ const ProfilePage = () => {
         </div>
         <button
           type="submit"
-          className="w-full btn btn-primary py-2 rounded hover:bg-blue-600 transition"
+          className="btn btn-gradient w-full py-2 rounded transition"
         >
           Update Profile
         </button>

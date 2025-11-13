@@ -88,14 +88,14 @@ export default function Slider() {
   return (
     <div className="relative flex flex-col items-center justify-center py-24 overflow-hidden">
       <motion.div
-        className="absolute text-sky-500 text-5xl top-12 left-12"
+        className="absolute text-sky-500 text-7xl top-12 left-12"
         variants={floatVariants}
         animate="float"
       >
         <FaReact />
       </motion.div>
       <motion.div
-        className="absolute text-4xl top-20 right-20"
+        className="absolute text-5xl top-20 right-20"
         variants={floatVariants}
         animate="float"
         transition={{ delay: 0.3 }}
@@ -103,7 +103,7 @@ export default function Slider() {
         <FaApple />
       </motion.div>
       <motion.div
-        className="absolute text-green-500 text-4xl bottom-16 right-24"
+        className="absolute text-green-500 text-5xl bottom-16 right-24"
         variants={floatVariants}
         animate="float"
         transition={{ delay: 0.6 }}
@@ -111,7 +111,7 @@ export default function Slider() {
         <FaAndroid />
       </motion.div>
       <motion.div
-        className="absolute text-blue-600 text-4xl bottom-24 left-24"
+        className="absolute text-blue-600 text-5xl bottom-24 left-24"
         variants={floatVariants}
         animate="float"
         transition={{ delay: 0.9 }}
@@ -127,7 +127,7 @@ export default function Slider() {
         <FaFigma />
       </motion.div>
       <motion.div
-        className="absolute text-orange-600 text-4xl top-10 right-1/3"
+        className="absolute text-orange-600 text-5xl top-10 right-1/3"
         variants={floatVariants}
         animate="float"
         transition={{ delay: 1.5 }}
@@ -135,7 +135,7 @@ export default function Slider() {
         <FaHtml5 />
       </motion.div>
       <motion.div
-        className="absolute text-yellow-500 text-4xl bottom-10 left-1/3"
+        className="absolute text-yellow-500 text-5xl bottom-10 left-1/3"
         variants={floatVariants}
         animate="float"
         transition={{ delay: 1.8 }}
@@ -166,7 +166,7 @@ export default function Slider() {
             exit={reduce ? { opacity: 0 } : "exit"}
             transition={{ duration: reduce ? 0.25 : 0.55, ease: "easeOut" }}
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-base-content mb-4">
+            <h2 className="heading-hero mb-4">
               {slides[index].title}
             </h2>
             <motion.p
@@ -190,7 +190,7 @@ export default function Slider() {
           transition={{ duration: 0.45 }}
         >
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-            <Link to="/courses" className="btn btn-primary btn-wide">
+            <Link to="/courses" className="btn btn-gradient btn-wide">
               Explore More
             </Link>
           </motion.div>

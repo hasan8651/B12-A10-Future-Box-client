@@ -25,13 +25,13 @@ const Navbar = () => {
 
   return (
     <div className="mb-25">
-      <div className="navbar max-w-7xl bg-primary text-white shadow-lg fixed top-0 w-full z-50 px-8">
+      <div className="navbar max-w-7xl section-gradient text-white shadow-lg fixed top-0 w-full z-50 px-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost lg:hidden hover:bg-purple-700"
+              className="btn btn-ghost lg:hidden hover:bg-purple-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-primary rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content section-gradient rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
                 <Link className="hover:text-purple-400" to={"/"}>
@@ -125,21 +125,21 @@ const Navbar = () => {
             </ul>
           </div>
           <Link
-            className="flex flex-wrap justify-center items-center gap-2 px-4 lg:px-0 text-2xl font-bold"
+            className="flex flex-wrap justify-center items-center gap-2 px-4 md:px-0 text-2xl font-bold"
             to="/"
           >
-            <img className=" w-30" src="/logo.webp" alt="logo" />
+            <img className="w-24" src="/logo.webp" alt="logo" />
           </Link>
         </div>
 
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1 space-x-6 font-semibold">
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-purple-900  text-purple-400"
+                    ? "bg-purple-900 text-purple-400"
                     : "hover:text-purple-400"
                 }
               >
@@ -151,7 +151,7 @@ const Navbar = () => {
                 to="/courses"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-purple-900  text-purple-400"
+                    ? "bg-purple-900 text-purple-400"
                     : "hover:text-purple-400"
                 }
               >
@@ -161,7 +161,7 @@ const Navbar = () => {
 
             {user && user?.email ? (
               <li>
-                <div className=" drawer-end">
+                <div className="drawer-end">
                   <input
                     id="my-drawer-5"
                     type="checkbox"
@@ -185,7 +185,7 @@ const Navbar = () => {
                       aria-label="close sidebar"
                       className="drawer-overlay"
                     ></label>
-                    <ul className="menu bg-primary min-h-full w-80 p-4">
+                    <ul className="menu section-gradient min-h-full w-80 p-4">
                       <li className="flex justify-center items-center pb-2">
                         <img
                           src={
@@ -196,16 +196,16 @@ const Navbar = () => {
                           className="rounded-full"
                         />
                       </li>
-                      <li className="text-center font-semibold border-b border-gray-200 pb-2">
+                      <li className="text-center font-semibold border-b border-gray-200 mb-2 pb-2">
                         Hello, {user?.displayName || "User"}
                       </li>
                       <li>
                         <NavLink
                           to="/profile"
                           className={({ isActive }) =>
-                            isActive
-                              ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
-                              : "hover:text-purple-400 btn btn-primary w-full"
+                          isActive
+                              ? "bg-transparent text-purple-400 btn w-full"
+                              : "hover:text-purple-400 btn btn-gradient w-full"
                           }
                         >
                           Update Profile
@@ -216,8 +216,8 @@ const Navbar = () => {
                           to="/dashboard/my-enrolled"
                           className={({ isActive }) =>
                             isActive
-                              ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
-                              : "hover:text-purple-400 btn btn-primary w-full"
+                              ? "bg-transparent text-purple-400 btn w-full"
+                              : "hover:text-purple-400 btn btn-gradient w-full"
                           }
                         >
                           My Enrolled Course
@@ -228,8 +228,8 @@ const Navbar = () => {
                           to="/dashboard/add-course"
                           className={({ isActive }) =>
                             isActive
-                              ? "bg-purple-900 text-purple-400 btn btn-primary w-full"
-                              : "hover:text-purple-400 btn btn-primary w-full"
+                              ? "bg-transparent text-purple-400 btn w-full"
+                              : "hover:text-purple-400 btn btn-gradient w-full"
                           }
                         >
                           Add Course
@@ -240,8 +240,8 @@ const Navbar = () => {
                           to="/dashboard/my-added"
                           className={({ isActive }) =>
                             isActive
-                              ? "bg-purple-900  text-purple-400 btn btn-primary w-full"
-                              : "hover:text-purple-400 btn btn-primary w-full"
+                              ? "bg-transparent text-purple-400 btn w-full"
+                              : "hover:text-purple-400 btn btn-gradient w-full"
                           }
                         >
                           My Added Course
@@ -251,7 +251,7 @@ const Navbar = () => {
                       <li>
                         <button
                           onClick={logoutFunction}
-                          className="btn btn-primary  w-full"
+                          className="btn btn-gradient w-full"
                         >
                           Logout
                         </button>
@@ -269,7 +269,7 @@ const Navbar = () => {
                 to="/about-us"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-purple-900  text-purple-400"
+                    ? "bg-purple-900 text-purple-400"
                     : "hover:text-purple-400"
                 }
               >
@@ -304,7 +304,7 @@ const Navbar = () => {
 
               <ul
                 tabIndex={0}
-                className="mt-3 p-2 shadow dropdown-content bg-primary text-white rounded-box w-52"
+                className="mt-3 p-2 shadow dropdown-content section-gradient text-white rounded-box w-52"
               >
                 <li className="flex justify-center items-center pb-2">
                   <img
@@ -325,7 +325,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={logoutFunction}
-                    className="btn btn-sm btn-primary  w-full"
+                    className="btn btn-sm btn-gradient w-full"
                   >
                     Logout
                   </button>
@@ -336,13 +336,13 @@ const Navbar = () => {
             <div className="hidden lg:flex gap-5 items-center">
               <Link
                 to={"/login"}
-                className="btn btn-primary font-semibold hover:bg-blue-100"
+                className="btn btn-gradient font-semibold hover:bg-blue-100"
               >
                 Login
               </Link>
               <Link
                 to={"/register"}
-                className="btn btn-primary font-semibold hover:bg-blue-100"
+                className="btn btn-gradient font-semibold hover:bg-blue-100"
               >
                 Register
               </Link>

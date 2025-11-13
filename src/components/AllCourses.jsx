@@ -41,17 +41,17 @@ const AllCourses = () => {
       <Helmet>
               <title>Study Pilot - Courses</title>
             </Helmet>
-      <div className="mb-4 bg-primary flex items-center justify-center py-2">
+      <div className="mb-4 section-gradient flex items-center justify-center py-2">
         <select
           className="select select-bordered w-full max-w-xs bg-transparent"
           value={categoryFilter}
           onChange={(e) => handleFilter(e.target.value)}
         >
-          <option className="bg-primary" value="">
+          <option className="section-gradient rounded-md" value="">
             All Category
           </option>
           {categories.map((category, i) => (
-            <option className="bg-primary" key={i} value={category}>
+            <option className="section-gradient rounded-md my-1" key={i} value={category}>
               {category}
             </option>
           ))}

@@ -180,7 +180,7 @@ const Register = () => {
                 )}
               </div>
               <div className="form-control">
-                <button type="submit" className="btn w-full btn-primary  ">
+                <button type="submit" className="btn w-full btn-gradient  ">
                   Register
                 </button>
               </div>

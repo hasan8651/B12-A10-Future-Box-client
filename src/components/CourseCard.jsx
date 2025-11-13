@@ -4,30 +4,34 @@ const CourseCard = ({ course }) => {
   const { _id, title, imageURL, price, duration, category } = course;
 
   return (
-    <div data-aos="fade-up">
-      <div key={_id} className="card rounded-xl md:rounded-lg p-4 shadow-lg">
-        <figure>
-          <img
-            className="w-full rounded-xl md:rounded-lg"
-            src={imageURL}
-            alt={title}
-          />
-        </figure>
-        <div>
-          <h2 className="card-title text-lg my-2 ml-2 text-blue-500 min-h-14">
-            {title}
-          </h2>
-          <span className="flex px-1 justify-between text-gray-700 text-xl font-semibold">
-            <p className="px-2">${price}</p>
-            <p className="px-2">Dur: {duration}</p>
+    <div data-aos="fade-up" className="group relative h-full">
+        <div className="absolute -inset-1px rounded-2xl bg-gradient-to-r from-primary/50 via-secondary/50 to-primary/50 opacity-50 blur-sm transition duration-500 group-hover:opacity-100 group-hover:blur-md" />
+            <div className="relative h-full rounded-2xl card-surface shadow-lg ring-1 ring-base-200 p-4 flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
+               <figure className="relative  w-full overflow-hidden rounded-xl">
+          <div className="aspect-video w-full overflow-hidden">
+            <img
+              src={imageURL}
+              alt={title}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          </div>
+          <span className="absolute right-3 bottom-3 badge section-gradient">{category}</span>
+          <span className="absolute left-3 top-3 badge section-gradient text-base-content backdrop-blur">
+            {duration}
           </span>
-          <p className="text-md my-2 font-semibold text-center text-blue-500">
-            Category: <span className="text-green-600"> {category}</span>
-          </p>
+          <span className="absolute right-3 top-3 badge section-gradient px-3 py-1 text-sm font-semibold shadow">
+            ${price}
+          </span>
+        </figure>
+        <h3 className="mt-4 text-lg font-semibold text-base-content line-clamp-2 min-h-14">
+          {title}
+        </h3>
+        <div className="mt-auto pt-4">
+          <Link to={`/courses/${_id}`} className="btn btn-gradient w-full">
+            View Details
+          </Link>
         </div>
-        <Link to={`/courses/${_id}`} className="btn btn-primary ">
-          View Details
-        </Link>
       </div>
     </div>
   );

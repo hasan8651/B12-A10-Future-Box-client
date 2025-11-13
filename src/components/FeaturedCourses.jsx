@@ -6,19 +6,18 @@ import CourseCard from "./CourseCard";
 const FeaturedCourses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+ 
   useEffect(() => {
     setLoading(true);
     axios("https://study-pilot-server-three.vercel.app/popular-courses")
       .then((data) => setCourses(data.data))
-      .catch((err) => setError(err))
+      .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, []);
 
   return (
-    <div className="my-2">
-      <h1 className="text-2xl md:text-3xl py-4 bg-primary font-semibold text-center ">
+    <div className="py-14">
+      <h1 className="text-2xl md:text-3xl py-4 mb-2 section-gradient font-semibold text-center">
         Popular Courses
       </h1>
 
