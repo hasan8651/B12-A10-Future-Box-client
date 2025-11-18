@@ -10,6 +10,12 @@
 
 ---
 
+## 📸 Screenshot
+
+![Screenshot](./public/screenshot.png)
+
+---
+
 ## 🚀 Key Features
 - **Personalized, Secure Dashboard** — Protected routes (React Router), Profile, My Added Courses, and My Enrolled, plus a tidy drawer navigation.
 - **Secure Authentication** — User login, registration, and Google Sign-In handled via Firebase. Axios-based API calls, loading/error states and page titles via Helmet.
